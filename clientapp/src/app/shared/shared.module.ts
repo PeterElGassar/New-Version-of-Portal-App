@@ -6,22 +6,26 @@ import {MenuModule} from 'primeng/menu';
 import { TextInputComponent } from './text-input/text-input.component';
 
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
-
+import { SidebarComponent } from './sidebar/sidebar.component';
+import {FileUploadModule} from 'primeng/fileupload';
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     BreascrumbComponent,
-    TextInputComponent
+    TextInputComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     MenuModule,
     ProgressSpinnerModule,
-    
-    
+    FileUploadModule,
+    HttpClientModule
   ],exports:[
     BreascrumbComponent,
-    TextInputComponent
+    TextInputComponent,
+    SidebarComponent
   ]
 })
 export class SharedModule { }
