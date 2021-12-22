@@ -16,6 +16,7 @@ namespace Api.Helpers
             CreateMap<CandidateProfile, CandidatProfileDto>();
             CreateMap<CompanyProfile, CompanyProfile>();
             CreateMap<CompanyProfile, CompanyProfileDto>();
+            CreateMap<CompanyProfileDto, CompanyProfile>();
         }
     }
 }

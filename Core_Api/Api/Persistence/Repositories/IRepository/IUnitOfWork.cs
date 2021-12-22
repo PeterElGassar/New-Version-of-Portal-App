@@ -11,5 +11,7 @@ namespace Api.Persistence.Repositories.IRepository
 
         IIndustryRepository Industry { get; }
         ICompanyRepository Company { get; }
+
+        void Complete();
     }
 }

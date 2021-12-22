@@ -22,6 +22,13 @@ namespace Api.Persistence.Repositories.IRepository
             string includeProperties = null
             );
 
+          Task<T> GetFirstOrDefaultAsync(
+            Expression<Func<T,bool>> filter  = null,
+            string includeProperties = null
+            );
+
+
+
         void Add(T enitty);
 
         void Remove(int id);

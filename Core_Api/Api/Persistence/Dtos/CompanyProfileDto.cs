@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Api.Models.Company;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +9,7 @@ namespace Api.Persistence.Dtos
 {
     public class CompanyProfileDto
     {
+        
         public int Id { get; set; }
 
         public string CompanyName { get; set; }
@@ -22,5 +25,6 @@ namespace Api.Persistence.Dtos
         public string Feacbook { get; set; }
         public string Website { get; set; }
 
+        public string AppUserId { get; set; }
     }
 }

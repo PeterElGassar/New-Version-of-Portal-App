@@ -24,7 +24,7 @@ namespace Api.Persistence.Repositories
         public void Update(CompanyProfile companyProfile)
         {
             var companyProfileInDB = _context
-                .CompanyProfiles.FirstOrDefault(cp => cp.Id == companyProfile.Id);
+                .CompanyProfiles.FirstOrDefault(cp => cp.AppUserId == companyProfile.AppUserId);
 
             if (companyProfileInDB != null)
             {
@@ -32,6 +32,9 @@ namespace Api.Persistence.Repositories
                 companyProfileInDB.ImgLogoPath = companyProfile.ImgLogoPath;
                 companyProfileInDB.FoundedDate = companyProfile.FoundedDate;
                 companyProfileInDB.CompanySize = companyProfile.CompanySize;
+                companyProfileInDB.LinkedIn = companyProfile.LinkedIn;
+                companyProfileInDB.Feacbook = companyProfile.Feacbook;
+                companyProfileInDB.Website = companyProfile.Website;
 
                  //var newCompanyProfile = _mapper.Map<CompanyProfile, CompanyProfile>(companyProfileInDB);
                 _context.SaveChanges();
@@ -39,19 +42,3 @@ namespace Api.Persistence.Repositories
         }
     }
 }
-
-
-//public int Id { get; set; }
-
-//public string CompanyName { get; set; }
-
-//public string ImgLogoPath { get; set; }
-
-
-//public DateTime FoundedDate { get; set; }
-
-//public int CompanySize { get; set; }
-
-//public string LinkedIn { get; set; }
-//public string Feacbook { get; set; }
-//public string Website { get; set; }

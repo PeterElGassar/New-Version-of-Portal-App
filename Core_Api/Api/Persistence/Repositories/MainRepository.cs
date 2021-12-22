@@ -27,14 +27,14 @@ namespace Api.Persistence.Repositories
 
 
 
-        public void Add(T enitty)
+        public void Add(T entity)
         {
-            throw new NotImplementedException();
+            dbSet.Add(entity);
         }
 
         public T Get(int id)
         {
-            throw new NotImplementedException();
+            return dbSet.Find(id);
         }
 
         public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter,
@@ -64,7 +64,7 @@ namespace Api.Persistence.Repositories
 
         public T GetFirstOrDefault(Expression<Func<T, bool>> filter, string includeProperties)
         {
-            IQueryable<T> query = dbSet;
+            IQueryable<T> query =  dbSet;
 
             //to Add Related Objects
             if (includeProperties != null)
@@ -79,6 +79,25 @@ namespace Api.Persistence.Repositories
                 query = query.Where(filter);
 
             return query.FirstOrDefault();
+        }
+
+         public async Task<T> GetFirstOrDefaultAsync(Expression<Func<T, bool>> filter, string includeProperties)
+        {
+             IQueryable<T> query =  dbSet;
+
+            //to Add Related Objects
+            if (includeProperties != null)
+            {
+                foreach (var includeProp in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query =  query.Include(includeProp);
+                }
+            }
+
+            if (filter != null)
+                query =  query.Where(filter);
+
+            return  await query.FirstOrDefaultAsync();
         }
 
 

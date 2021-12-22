@@ -35,7 +35,7 @@ namespace Api.Models.Company
 
         public virtual ICollection<CompanyAddress> CompanyProfiles { get; set; }
         public virtual ICollection<CompanyIndustry> CompanyIndustries { get; set; }
-        public virtual ICollection<CompanyPhonNumber> CompanyPhonNumbers { get; set; }
+        public  ICollection<CompanyPhonNumber> CompanyPhonNumbers { get; set; }
 
 
         public string AppUserId { get; set; }
