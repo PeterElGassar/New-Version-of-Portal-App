@@ -10,6 +10,6 @@ namespace Api.Persistence.Repositories.IRepository
         IAppUserRepository AppUser { get; }
 
         IIndustryRepository Industry { get; }
-
+        ICompanyRepository Company { get; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +8,13 @@ namespace Api.Models.Company
 {
     public class CompanyProfile
     {
+
+
+        public CompanyProfile()
+        {
+            CompanyIndustries = new Collection<CompanyIndustry>();
+            CompanyPhonNumbers = new Collection<CompanyPhonNumber>();
+        }
 
         public int Id { get; set; }
 

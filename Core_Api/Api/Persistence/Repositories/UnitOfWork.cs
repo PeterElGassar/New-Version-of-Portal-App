@@ -25,10 +25,15 @@ namespace Api.Persistence.Repositories
             AppUser = new AppUserRepository(_context);
 
             Industry = new IndustryRepository(_context);
+            Company = new CompanyRepository(_context);
         }
 
         public IAppUserRepository AppUser { get; private set; }
         public IIndustryRepository Industry { get; private set; }
+        public ICompanyRepository Company { get; private set; }
+
+
+
 
         //Save Change in Glopal layer for every Repo
         public void Complete()

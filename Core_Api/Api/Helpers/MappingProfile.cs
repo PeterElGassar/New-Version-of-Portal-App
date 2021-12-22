@@ -1,4 +1,5 @@
 ﻿using Api.Models.Candidate;
+using Api.Models.Company;
 using Api.Persistence.Dtos;
 using AutoMapper;
 using System;
@@ -13,6 +14,8 @@ namespace Api.Helpers
         public MappingProfile()
         {
             CreateMap<CandidateProfile, CandidatProfileDto>();
+            CreateMap<CompanyProfile, CompanyProfile>();
+            CreateMap<CompanyProfile, CompanyProfileDto>();
         }
     }
 }

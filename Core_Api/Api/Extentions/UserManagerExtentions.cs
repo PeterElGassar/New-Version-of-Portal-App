@@ -30,6 +30,18 @@ namespace Api.Extentions
         }
 
 
+        //Company Functions
+
+        public static async Task<AppUser> FindByEmailWithProfileCompany
+            (this UserManager<AppUser> input, ClaimsPrincipal user)
+        {
+            var email = user?.Claims?.FirstOrDefault(u => u.Type == ClaimTypes.Email)?.Value;
+
+            return await input.Users
+                .Include(u => u.CopmanyProfile)
+                .FirstOrDefaultAsync(u => u.Email == email);
+        }
+
 
     }
 }

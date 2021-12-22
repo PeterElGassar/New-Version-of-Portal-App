@@ -14,9 +14,15 @@ export class CompanyInfoComponent implements OnInit {
 
   ngOnInit() {
       this.items = [
-          {label: 'Step 1'},
-          {label: 'Step 2'},
-          {label: 'Step 3'}
+          {label: 'Company Information',
+          routerLink :"/company/info"},
+
+          {label: 'Company Profile',
+          routerLink :"/company/profile"},
+
+          {label: 'Company Addresses',
+          routerLink :"/company/Address"},
+       
       ];
   }
 }
