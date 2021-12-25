@@ -145,8 +145,8 @@ font-size: 1.4rem;
 
 }
 
-.user-area .user-form-content .user-form .form-group .form-control{
-  box-shadow: 0 2px 15px 3px rgb(230 233 249 / 70%) !important;
+.form-group .form-control{
+  box-shadow:0 2px 9px 1px rgb(230 233 249 / 70%) !important;
 }
 
 .pi .pi-check{
@@ -179,3 +179,12 @@ font-size: 1rem;
 .p-dropdown .p-dropdown-label.p-placeholder{
   padding: 10px 18px !important;
 }
+
+.p-calendar,
+.p-multiselect{
+  width:100% !important;
+  height: 3rem;
+  background: #fff;
+  box-shadow:0 2px 9px 1px rgb(230 233 249 / 70%) !important;
+}
+

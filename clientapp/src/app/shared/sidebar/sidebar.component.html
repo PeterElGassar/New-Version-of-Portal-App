@@ -1,5 +1,7 @@
 
-    <div class="avatar-sidebar">
+<p-toast position="top-right" key="ImageSaveSuccess"></p-toast>
+   
+   <div class="avatar-sidebar">
         <h3>Share This Job</h3>
         <div class="avatar-img">
             <img class="company-logo" src="{{img_path}}" alt="Image">
@@ -11,7 +13,7 @@
                 </p-fileUpload> -->
 
                 <p-fileUpload #fubauto mode="basic" name="companyLogoFile[]" 
-                 accept="image/*" maxFileSize="10000"
+                 accept="image/*" maxFileSize="100000"
                   (onSelect)="OnSelectedImage($event)" 
                   [auto]="true" chooseLabel="Upload image">
                 </p-fileUpload>

@@ -9,6 +9,9 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
+
+import {ToastModule} from 'primeng/toast';
+
 @NgModule({
   declarations: [
     BreascrumbComponent,
@@ -21,7 +24,8 @@ import {HttpClientModule} from '@angular/common/http';
     MenuModule,
     ProgressSpinnerModule,
     FileUploadModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastModule
   ],exports:[
     BreascrumbComponent,
     TextInputComponent,

@@ -19,6 +19,10 @@ using Microsoft.AspNetCore.Identity;
 using Api.Core.Interfaces;
 using Api.Core.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Http.Features;
+using System.IO;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Http;
 
 namespace Api
 {
@@ -34,7 +38,11 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
+            //services.AddControllers();
 
             services.AddCors(opt =>
             {
@@ -62,7 +70,13 @@ namespace Api
             //add some Extension Method 
             services.AddIdentityServices(Configuration);
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-          
+            //Setting Of Uplode Files
+            services.Configure<FormOptions>(o =>
+            {
+                o.BufferBodyLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.ValueLengthLimit = int.MaxValue;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,7 +93,13 @@ namespace Api
             app.UseCors("CorsPolicy");
             //should be Before UseAuthorization
             app.UseAuthentication();
-
+            //Setting Of Uplode Files 
+            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+                RequestPath = new PathString("/Resources")
+            });
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

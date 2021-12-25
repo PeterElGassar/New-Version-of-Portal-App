@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +8,13 @@ namespace Api.Models.Company
 {
     public class CompanyProfile
     {
+
+
+        public CompanyProfile()
+        {
+            CompanyIndustries = new Collection<CompanyIndustry>();
+            CompanyPhonNumbers = new Collection<CompanyPhonNumber>();
+        }
 
         public int Id { get; set; }
 
@@ -17,17 +25,20 @@ namespace Api.Models.Company
    
         public DateTime FoundedDate { get; set; }
 
-        public int CompanySize { get; set; }
+        public DateTime CreatedAt { get; set; }
+
+        public string CompanyDescription { get; set; }
+
+        public string CompanySize { get; set; }
 
         public string LinkedIn { get; set; }
         public string Feacbook { get; set; }
         public string Website { get; set; }
 
 
-
-        public virtual ICollection<CompanyAddress> CompanyProfiles { get; set; }
+        public virtual ICollection<CompanyAddress> CompanyAddresses { get; set; }
         public virtual ICollection<CompanyIndustry> CompanyIndustries { get; set; }
-        public virtual ICollection<CompanyPhonNumber> CompanyPhonNumbers { get; set; }
+        public  ICollection<CompanyPhonNumber> CompanyPhonNumbers { get; set; }
 
 
         public string AppUserId { get; set; }

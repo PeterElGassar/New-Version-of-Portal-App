@@ -213,8 +213,8 @@ namespace Api.Migrations
                     b.Property<int>("CompanyProfileId")
                         .HasColumnType("int");
 
-                    b.Property<int>("IndustryName")
-                        .HasColumnType("int");
+                    b.Property<string>("IndustryName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -233,8 +233,8 @@ namespace Api.Migrations
                     b.Property<int>("CompanyProfileId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -253,11 +253,17 @@ namespace Api.Migrations
                     b.Property<string>("AppUserId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("CompanyDescription")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CompanyName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CompanySize")
-                        .HasColumnType("int");
+                    b.Property<string>("CompanySize")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Feacbook")
                         .HasColumnType("nvarchar(max)");
@@ -433,7 +439,7 @@ namespace Api.Migrations
             modelBuilder.Entity("Api.Models.Company.CompanyAddress", b =>
                 {
                     b.HasOne("Api.Models.Company.CompanyProfile", "CompanyProfile")
-                        .WithMany("CompanyProfiles")
+                        .WithMany("CompanyAddresses")
                         .HasForeignKey("CompanyProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

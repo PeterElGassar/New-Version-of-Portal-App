@@ -6,8 +6,14 @@ import { UserLayoutModule } from '../user-layout/user-layout.module';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { CompanyRoutingModule } from './company-routing.module';
 import { CompanyInfoComponent } from './company-info/company-info.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {StepsModule} from 'primeng/steps';
+import { DropdownModule } from 'primeng/dropdown';
+import {CalendarModule} from 'primeng/calendar';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {EditorModule} from 'primeng/editor';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +27,12 @@ import {StepsModule} from 'primeng/steps';
     UserLayoutModule,
     SharedModule,
     StepsModule,
-    
+    DropdownModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CalendarModule,
+    MultiSelectModule,
+    EditorModule
   ]
 })
 export class CompanyModule { }

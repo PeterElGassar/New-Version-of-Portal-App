@@ -1,4 +1,4 @@
-<p-steps [model]="items" [readonly]="true">
+<p-steps [model]="items" [readonly]="false">
 
 
     
@@ -9,296 +9,97 @@
     <div class="row">
       <div class="col-lg-6 col-md-6">
         <div class="form-group">
-          <label>First Name</label>
-          <input class="form-control" type="text" name="First-Name">
+          <!-- <label>Company Name</label> -->
+          
+        
+
+          <!-- <input class="form-control" type="text" name="First-Name"> -->
+          <app-text-input [normalMood]="true" formControlName="CompanyName" [type]="'text'" [label]="'Company Name'" ></app-text-input>
+
         </div>
       </div>
       <div class="col-lg-6 col-md-6">
         <div class="form-group">
-          <label>Last Name</label>
-          <input class="form-control" type="text" name="Last-Name">
+          <label>Founded Date</label>
+        
+
+          <div class="">
+            <p-calendar formControlName="FoundedDate" [showIcon]="true" inputId="icon"></p-calendar>
+        </div>
+
+
         </div>
       </div>
       <div class="col-lg-6 col-md-6">
         <div class="form-group">
-          <label>Email</label>
+          <label>LinkedIn Link</label>
           <input class="form-control" type="email" name="Email">
         </div>
       </div>
       <div class="col-lg-6 col-md-6">
+        
+
+
         <div class="form-group">
-          <label>Phone</label>
+          <label>Company Size</label>
+          
+          <p-dropdown  [options]="CompanySizes"  [(ngModel)]="selectedCompanySize"
+          [showClear]="true" placeholder="Select Company Size">
+
+           <ng-template let-size pTemplate="item">
+               <div class="select-item">
+                 <i class="flaticon-community display-7"></i>
+                 <p>{{size}}</p>
+               </div>
+           </ng-template>
+         </p-dropdown>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Facebook Link</label>
           <input class="form-control" type="text" name="Phone">
         </div>
+
       </div>
       <div class="col-lg-6 col-md-6">
         <div class="form-group">
-          <label>Date Of Barth</label>
-          <div class="input-group date" id="datetimepicker">
-            <input type="text" class="form-control" placeholder="12/11/2020">
-            <span class="input-group-addon"></span>
-            <i class="bx bx-calendar"></i>
+          <label>Company Industries</label>
+
+          <div class="">
+            <p-multiSelect [options]="industries"  defaultLabel="Select Industries" optionLabel="Name" selectedItemsLabel="{0} items selected"></p-multiSelect>
           </div>
+
         </div>
       </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Gender</label>
-          <select class="height">
-            <option value="1">Male</option>
-            <option value="2">Female</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Marital status</label>
-          <select class="height">
-            <option value="1">Married</option>
-            <option value="2">Unmarried</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Nationality</label>
-          <select>
-            <option value="1">United Kingdom</option>
-            <option value="2">Austria</option>
-            <option value="3">Bahrain</option>
-            <option value="4">Canada</option>
-            <option value="5">Denmark</option>
-            <option value="6">Germany</option>
-          </select>
-        </div>
-      </div>
+      
+  
+
+     
+
       <div class="col-lg-12">
         <div class="form-group">
-          <label>Address Details</label>
-          <textarea name="message" class="form-control" rows="4"></textarea>
+          <label>Company Details</label>
+         
+          <p-editor formControlName="CompanyDescription" [style]="{'height':'320px'}">
+            <ng-template pTemplate="header">
+                <span class="ql-formats">
+                    <button type="button" class="ql-bold" aria-label="Bold"></button>
+                    <button type="button" class="ql-italic" aria-label="Italic"></button>
+                    <button type="button" class="ql-list" aria-label="Unordered List"></button>
+                </span>
+            </ng-template>
+        </p-editor>
+
+
         </div>
       </div>
     </div>
-    <h3>Career And Application Information</h3>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="form-group">
-          <label>Objective</label>
-          <textarea name="message" class="form-control" rows="4"></textarea>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Present Salary</label>
-          <input class="form-control" type="text" name="Salary">
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Expected Salary</label>
-          <input class="form-control" type="email" name="Salary">
-        </div>
-      </div>
-    </div>
-    <h4>Job Level</h4>
-    <div class="row mb-30">
-      <div class="col-lg-4 col-sm-6 col-md-3">
-        <label class="single-check">
-          Entry Level
-          <input type="radio" checked="checked" name="radio-1">
-          <span class="checkmark"></span>
-        </label>
-      </div>
-      <div class="col-lg-4 col-sm-6 col-md-3">
-        <label class="single-check">
-          Mid Level
-          <input type="radio" name="radio-1">
-          <span class="checkmark"></span>
-        </label>
-      </div>
-      <div class="col-lg-4 col-sm-6 col-md-3">
-        <label class="single-check">
-          Top Level
-          <input type="radio" name="radio-1">
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
-    <h4>Job Nature</h4>
-    <div class="row mb-30">
-      <div class="col-lg-2 col-sm-6 col-md-3">
-        <label class="single-check">
-          Full Time
-          <input type="radio" checked="checked" name="radio-2">
-          <span class="checkmark"></span>
-        </label>
-      </div>
-      <div class="col-lg-2 col-sm-6 col-md-3">
-        <label class="single-check">
-          Part Time
-          <input type="radio" name="radio-2">
-          <span class="checkmark"></span>
-        </label>
-      </div>
-      <div class="col-lg-2 col-sm-6 col-md-3">
-        <label class="single-check">
-          Contract
-          <input type="radio" name="radio-2">
-          <span class="checkmark"></span>
-        </label>
-      </div>
-      <div class="col-lg-2 col-sm-6 col-md-3">
-        <label class="single-check">
-          Internship
-          <input type="radio" name="radio-2">
-          <span class="checkmark"></span>
-        </label>
-      </div>
-      <div class="col-lg-2 col-sm-6 col-md-3">
-        <label class="single-check">
-          Freelance
-          <input type="radio" name="radio-2">
-          <span class="checkmark"></span>
-        </label>
-      </div>
-      <div class="col-lg-2 col-sm-6 col-md-3">
-        <label class="single-check">
-          Office
-          <input type="radio" name="radio-2">
-          <span class="checkmark"></span>
-        </label>
-      </div>
-    </div>
-    <h3>Education</h3>
-    <div class="row">
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Level of Education</label>
-          <select>
-            <option value="1">Massachusetts</option>
-            <option value="2">Maryland</option>
-            <option value="3">Colorado</option>
-            <option value="4">Vermont</option>
-            <option value="5">Virginia</option>
-            <option value="6">Washington</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Exam / Degree Title</label>
-          <select>
-            <option value="1">SEE</option>
-            <option value="2">M.A.</option>
-            <option value="3">Enginery of CSE</option>
-            <option value="4">Master</option>
-            <option value="5">Associate</option>
-            <option value="6">Graduate</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Major/Group</label>
-          <input class="form-control" type="text" name="Major">
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Institute Name</label>
-          <input class="form-control" type="text" name="Institute">
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Result</label>
-          <select class="height">
-            <option value="1">First Class</option>
-            <option value="2">Second Class</option>
-            <option value="3">Thread Class</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Marks(%)</label>
-          <input class="form-control" type="text" name="Marks">
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Year of Passing</label>
-          <select>
-            <option value="1">2020</option>
-            <option value="2">2021</option>
-            <option value="3">2022</option>
-            <option value="4">2023</option>
-            <option value="5">2024</option>
-            <option value="6">2025</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Duration (Years)</label>
-          <input class="form-control" type="text" name="Duration">
-        </div>
-      </div>
-    </div>
-    <h3>Experience</h3>
-    <div class="row">
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Company Name</label>
-          <input class="form-control" type="text" name="Company">
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Company Business </label>
-          <input class="form-control" type="text" name="Business">
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Designation</label>
-          <input class="form-control" type="text" name="Designation">
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Department</label>
-          <input class="form-control" type="text" name="Department">
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Responsibilities</label>
-          <input class="form-control" type="text" name="Responsibilities">
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <label>Company Location</label>
-          <input class="form-control" type="text" name="Location">
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="form-group">
-          <label>Employment Period</label>
-          <select>
-            <option value="1">2020</option>
-            <option value="2">2021</option>
-            <option value="3">2022</option>
-            <option value="4">2023</option>
-            <option value="5">2024</option>
-            <option value="6">2025</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-lg-12">
-        <a href="#" class="default-btn">Save</a>
-      </div>
-    </div>
+    
+ 
+   
+  
+   
+   
   </form>
 </div>

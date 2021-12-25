@@ -8,7 +8,7 @@ namespace Api.Models.Company
     public class CompanyIndustry
     {
         public int Id { get; set; }
-        public int IndustryName { get; set; }
+        public string IndustryName { get; set; }
 
 
 

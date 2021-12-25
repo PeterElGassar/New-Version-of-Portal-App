@@ -79,7 +79,6 @@ namespace Api.Controllers
             var user = await _userManager.FindByEmailWithCandidatProfile(HttpContext.User);
             return _mapper.Map<CandidateProfile, CandidatProfileDto>(user.CandidateProfile);
 
-
         }
 
 

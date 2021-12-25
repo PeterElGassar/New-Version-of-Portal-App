@@ -11,7 +11,8 @@ export class TextInputComponent implements OnInit,ControlValueAccessor {
 
   @ViewChild('input',{static:true}) input:ElementRef;
   @Input() type = 'text';
-  @Input() label = 'string';
+  @Input() label:string = 'string';
+  @Input() normalMood = false;
 
 
   constructor(@Self() public controlDir:NgControl) { 
