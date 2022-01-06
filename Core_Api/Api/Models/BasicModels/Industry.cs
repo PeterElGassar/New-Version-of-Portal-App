@@ -8,6 +8,8 @@ namespace Api.Models.BasicModels
     public class Industry
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string IndustryName { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

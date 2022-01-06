@@ -11,9 +11,10 @@ namespace Api.Models.Company
 
         public string PhoneNumber { get; set; }
 
-
+        public bool IsDeleted { get; set; }
 
         public int CompanyProfileId { get; set; }
         public CompanyProfile CompanyProfile { get; set; }
+
     }
 }

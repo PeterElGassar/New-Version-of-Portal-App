@@ -1,72 +1,83 @@
 <p-steps [model]="items" [readonly]="false"></p-steps>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<p-toast position="top-right" key="ImageSaveSuccess"></p-toast>
 
 <div class="candidates-dashboard-content">
     <div class="candidates-dashboard">
-        <h3>Candidate Dashboard</h3>
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="single-work-view">
-                    <span>24</span>
-                    <h3>Active Job Listings</h3>
+        <h3>Company Addresses /Brunches</h3>
+        <form [formGroup]="addressForm"
+            (ngSubmit)="activeEditeMood? updateAddress() :submitForm() ">
+
+            <div class="row my-5">
+                <div class="col-lg-3">
+
+                    <span class="p-float-label">
+                        <input type="text" id="country" pInputText formControlName="country">
+                        <label for="country">country</label>
+                    </span>
+                </div>
+
+                <div class="col-lg-3">
+
+                    <span class="p-float-label">
+                        <input type="text" id="city" pInputText formControlName="city">
+                        <label for="city">city</label>
+                    </span>
+                </div>
+
+                <div class="col-lg-3">
+
+                    <span class="p-float-label">
+                        <input type="text" id="street" pInputText formControlName="street">
+                        <label for="street">street</label>
+                    </span>
+                </div>
+
+                <div class="col-lg-3">
+                    <span class="p-float-label">
+                        <input type="text" id="zipcode" pInputText formControlName="zipCode">
+                        <label for="zipcode">zipcode</label>
+                    </span>
+                </div>
+
+                <div class="col-6 mt-4 d-flex mx-auto">
+                    
+                    <p-button [disabled]="addressForm.invalid" type="submit" class="mx-auto" [label]="(!activeEditeMood) ? 'Add New Address': 'Update Address'" icon="pi pi-plus"></p-button>
+
+                    <p-button  *ngIf="activeEditeMood" (click)="cancelUpdateMood()" class="mx-auto" label="Cancel" icon="pi pi-times"></p-button>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="single-work-view">
-                    <span>362</span>
-                    <h3>Total Job Views</h3>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="single-work-view">
-                    <span>43</span>
-                    <h3>Total Applications</h3>
-                </div>
-            </div>
-        </div>
+        </form>
     </div>
+
     <div class="recent-activities">
-        <h3>Recent Activities</h3>
-        <ul class="activities">
-            <li>
-                Your Job UX/UI Designer Has Been Approved!
-                <a href="#"><i class="bx bx-x"></i></a>
-            </li>
-            <li>
-                Timothy Demers Has Sent You Private Message!
-                <a href="#"><i class="bx bx-x"></i></a>
-            </li>
-            <li>
-                Your Job Listing Web Designer is Expiring!
-                <a href="#"><i class="bx bx-x"></i></a>
-            </li>
-            <li>
-                Someone Bookmarked Your Project Manager Job!
-                <a href="#"><i class="bx bx-x"></i></a>
-            </li>
-            <li>
-                You Have New Application for Research Assistant!
-                <a href="#"><i class="bx bx-x"></i></a>
-            </li>
-            <li>
-                Terrance Hartman Left a Review Your Job!
-                <a href="#"><i class="bx bx-x"></i></a>
-            </li>
-            <li>
-                Your Job Content Writing Has Been Approved!
-                <a href="#"><i class="bx bx-x"></i></a>
-            </li>
-            <li>
-                Someone Bookmarked Your Support Executive Job!
-                <a href="#"><i class="bx bx-x"></i></a>
-            </li>
-            <li>
-                Anderson Lara Has Sent You Private Message!
-                <a href="#"><i class="bx bx-x"></i></a>
-            </li>
-            <li>
-                Donal Henri Smith Left a Review Your Job!
-                <a href="#"><i class="bx bx-x"></i></a>
-            </li>
-        </ul>
+        <h3>All Addresses</h3>
+
+        <div class="row">
+
+            <p-toolbar *ngFor="let address of companyAddresses ">
+                <div class="p-toolbar-group-left">
+
+                    <h5 class="text-mute">
+                        {{address.country}}
+                        {{address.city}}
+                        {{address.street}}
+                    </h5>
+
+                </div>
+
+                <div class="p-toolbar-group-right">
+                    <p-button icon="pi pi-pencil mx-1" (click)="initialEditAddress(address)"></p-button>
+
+                    <p-button  (click)="confirmRemove(address.id)" icon="pi pi-trash mx-1" styleClass="p-button-danger"></p-button>
+                </div>
+
+
+            </p-toolbar>
+        </div>
+
     </div>
+
+
 </div>

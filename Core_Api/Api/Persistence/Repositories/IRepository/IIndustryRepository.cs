@@ -9,5 +9,6 @@ namespace Api.Persistence.Repositories.IRepository
     public interface IIndustryRepository:IRepository<Industry>
     {
         void Update(Industry industry);
+        void Delete(Industry industry);
     }
 }

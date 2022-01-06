@@ -34,13 +34,14 @@ namespace Api.Persistence.Repositories
             if (companyProfileInDB != null)
             {
                 companyProfileInDB.CompanyName = companyProfile.CompanyName;
+                companyProfileInDB.CompanyDescription = companyProfile.CompanyDescription;
                 companyProfileInDB.ImgLogoPath = companyProfile.ImgLogoPath;
                 companyProfileInDB.FoundedDate = companyProfile.FoundedDate;
                 companyProfileInDB.CompanySize = companyProfile.CompanySize;
                 companyProfileInDB.LinkedIn = companyProfile.LinkedIn;
                 companyProfileInDB.Feacbook = companyProfile.Feacbook;
                 companyProfileInDB.Website = companyProfile.Website;
-
+                companyProfileInDB.AppUserId = companyProfile.AppUserId;
                  //var newCompanyProfile = _mapper.Map<CompanyProfile, CompanyProfile>(companyProfileInDB);
                 _context.SaveChanges();
             }

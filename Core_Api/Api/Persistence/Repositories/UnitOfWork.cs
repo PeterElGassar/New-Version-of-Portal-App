@@ -26,11 +26,17 @@ namespace Api.Persistence.Repositories
 
             Industry = new IndustryRepository(_context);
             Company = new CompanyRepository(_context);
+            CompanyIndustry = new CompanyIndustryRepository(_context);
+            CompanyAddress = new CompanyAddressRepository(_context);
+            CompanyNumber = new CompanyNumbersRepository(_context);
         }
 
         public IAppUserRepository AppUser { get; private set; }
         public IIndustryRepository Industry { get; private set; }
         public ICompanyRepository Company { get; private set; }
+        public ICompanyIndustryRepository CompanyIndustry { get; private set; }
+        public ICompanyAddressRepository CompanyAddress { get; private set; }
+        public ICompanyNumbersRepository CompanyNumber { get; private set; }
 
 
 

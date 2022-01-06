@@ -103,7 +103,7 @@ export class UserNavbarComponent implements OnInit {
   getUserId() {
     this.accountSerrvice.currentUserId$.subscribe((userId) => {
       if (userId) {
-        debugger
+        // debugger
         this.userId = userId;
         this.getDrops();
     

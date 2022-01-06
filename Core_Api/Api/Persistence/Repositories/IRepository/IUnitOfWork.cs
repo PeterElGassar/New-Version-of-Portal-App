@@ -11,6 +11,10 @@ namespace Api.Persistence.Repositories.IRepository
 
         IIndustryRepository Industry { get; }
         ICompanyRepository Company { get; }
+        ICompanyIndustryRepository CompanyIndustry { get; }
+        ICompanyAddressRepository CompanyAddress { get; }
+
+        ICompanyNumbersRepository CompanyNumber { get; }
 
         void Complete();
     }

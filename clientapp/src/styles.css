@@ -188,3 +188,14 @@ font-size: 1rem;
   box-shadow:0 2px 9px 1px rgb(230 233 249 / 70%) !important;
 }
 
+.p-float-label input{
+  width: 100% !important;
+}
+
+.p-toolbar{
+ margin: 1rem 2.2rem !important;
+}
+
+.p-toolbar-group-left > h5{
+  font-size: 1.1rem !important;
+}

@@ -14,14 +14,23 @@ import {CalendarModule} from 'primeng/calendar';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {EditorModule} from 'primeng/editor';
 
-
+import {ToastModule} from 'primeng/toast';
+import {ToolbarModule} from 'primeng/toolbar';
+import {InputTextModule} from 'primeng/inputtext';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { CompanyNumbersComponent } from './company-numbers/company-numbers.component';
+import {InputMaskModule} from 'primeng/inputmask';
 @NgModule({
   declarations: [
+    
     CompanyComponent,
     CompanyProfileComponent,
-    CompanyInfoComponent
+    CompanyInfoComponent,
+    CompanyNumbersComponent
+
   ],
   imports: [
+
     CommonModule,
     CompanyRoutingModule,
     UserLayoutModule,
@@ -32,7 +41,14 @@ import {EditorModule} from 'primeng/editor';
     ReactiveFormsModule,
     CalendarModule,
     MultiSelectModule,
-    EditorModule
+    EditorModule,
+    ToastModule,
+    ToolbarModule,
+    InputTextModule,
+    ConfirmDialogModule,
+    InputMaskModule
+
+
   ]
 })
 export class CompanyModule { }

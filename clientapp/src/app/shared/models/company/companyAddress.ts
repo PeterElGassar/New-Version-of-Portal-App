@@ -1,15 +1,13 @@
+import { ICompanyProfile } from "./companyProfile";
+
 export interface ICompanyAddress {
-    
+    id:number;
+    country:string;
+    city:string;
+    street:string;
+    zipCode:string;
 
-
-    Id:number;
-    Country:string;
-    City:string;
-    Street:string;
-    ZipCode:string;
-
-
-    CompanyProfileId:number;
-
+    companyProfileId:number;
+    companyProfile:ICompanyProfile;
 
 }

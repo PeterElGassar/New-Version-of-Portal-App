@@ -1,14 +1,8 @@
 export interface     ICompanyPhoneNumber{
 
-
-
-
-
-Id:number;
-PhoneNumber:number;
-CompanyProfileId:number;
-
-
+    id:number;
+    phoneNumber:number;
+    companyProfileId:number;
     // public int Id { get; set; }
     // public int PhoneNumber { get; set; }
     // public int CompanyProfileId { get; set; }

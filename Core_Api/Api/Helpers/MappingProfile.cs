@@ -1,4 +1,5 @@
-﻿using Api.Models.Candidate;
+﻿using Api.Models.BasicModels;
+using Api.Models.Candidate;
 using Api.Models.Company;
 using Api.Persistence.Dtos;
 using AutoMapper;
@@ -15,8 +16,25 @@ namespace Api.Helpers
         {
             CreateMap<CandidateProfile, CandidatProfileDto>();
             CreateMap<CompanyProfile, CompanyProfile>();
+            //CompanyProfile
             CreateMap<CompanyProfile, CompanyProfileDto>();
             CreateMap<CompanyProfileDto, CompanyProfile>();
+
+            CreateMap<CompanyIndustry, CompanyIndustryDto>();
+
+            CreateMap<CompanyProfile, GetCompanyProfileDto>();
+
+            //CreateMap<GetCompanyProfileDto, CompanyProfile>();
+            CreateMap<Industry, CompanyIndustryDto>();
+
+
+            CreateMap<CompanyAddress, CompanyAddress>();
+
+            CreateMap<CompanyAddress, CompanyAddresesDto>();
+
+            CreateMap<CompanyPhonNumber, CompanyPhoneNumbersDto>();
+            CreateMap< CompanyPhoneNumbersDto, CompanyPhonNumber>();
+
         }
     }
 }

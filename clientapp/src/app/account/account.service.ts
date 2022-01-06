@@ -5,7 +5,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { Header } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +36,7 @@ export class AccountService {
 
       map((user:IUser)=>{
         if(user){
-          console.log(user)
+          // console.log(user)
               localStorage.setItem("token",user.token);
               this.currentUserSource.next(user);
               this.currentUserIdSource.next(user.id);
@@ -53,7 +52,7 @@ export class AccountService {
 
       map((user: IUser) => {
         if (user) {
-          debugger;
+          // debugger;
           localStorage.setItem("token", user.token);
           this.currentUserSource.next(user);
           this.currentUserIdSource.next(user.id);

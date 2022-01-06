@@ -17,12 +17,23 @@ namespace Api.Persistence.Repositories
             _context = context;
 
         }
+
+        public void Delete(Industry industry)
+        {
+            var industruFromDb = _context.Industries.FirstOrDefault(i => i.Id == industry.Id);
+            if (industruFromDb != null)
+            {
+                industruFromDb.IsDeleted = true;
+                _context.SaveChanges();
+            }
+        }
+
         public void Update(Industry industry)
         {
             var industruFromDb = _context.Industries.FirstOrDefault(i=> i.Id == industry.Id);
             if (industruFromDb != null)
             {
-                industruFromDb.Name = industry.Name;
+                industruFromDb.IndustryName = industry.IndustryName;
                 _context.SaveChanges();
             }
         }

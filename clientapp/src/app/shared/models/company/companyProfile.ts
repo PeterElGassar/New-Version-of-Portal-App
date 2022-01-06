@@ -8,11 +8,14 @@ export interface ICompanyProfile{
         CompanyName:string;
         ImgLogoPath:string;
         FoundedDate:Date;
-        CompanySize:number;
+        CreateAt:Date;
+        CompanySize:string;
         LinkedIn:string;
         Feacbook:string;
         Website:string;
         AppUserId:string;
+    
+        CompanyDescription:string,
 
         CompanyAddresses:ICompanyAddress[];
         CompanyIndustries:ICompanyIndustry[];

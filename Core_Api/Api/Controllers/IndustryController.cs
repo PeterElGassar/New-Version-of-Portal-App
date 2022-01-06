@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Api.Models.BasicModels;
+using Api.Persistence.Dtos;
 using Api.Persistence.Repositories.IRepository;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -13,10 +15,12 @@ namespace Api.Controllers
 
         private readonly IUnitOfWork _unitOfWork;
 
-        public IndustryController(IUnitOfWork unitOfWork)
+        private readonly IMapper _mapper;
+
+        public IndustryController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
-            
+            _mapper = mapper;
         }
 
 
@@ -38,11 +42,17 @@ namespace Api.Controllers
 
 
         [HttpGet]
-        public   ActionResult<List<Industry>> GetIndustries()
+        public   ActionResult<List<CompanyIndustryDto>> GetIndustries()
         {
             var industries = _unitOfWork.Industry.GetAll();
+            List<CompanyIndustryDto> temp = new List<CompanyIndustryDto>();
 
-            return Ok(industries);
+            foreach (var item in industries)
+            {
+                temp.Add(_mapper.Map<Industry, CompanyIndustryDto>(item));
+            }
+            
+            return temp;
         }
     }
 }

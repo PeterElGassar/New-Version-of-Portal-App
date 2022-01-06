@@ -11,7 +11,7 @@ namespace Api.Models.Candidate
 
         public string PhoneNumber { get; set; }
 
-
+        public bool IsDeleted { get; set; }
         public int CandidateProfileId { get; set; }
         public CandidateProfile CandidateProfile { get; set; }
     }

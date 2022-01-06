@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CompanyComponent } from './company.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { CompanyInfoComponent } from './company-info/company-info.component';
+import { CompanyNumbersComponent } from './company-numbers/company-numbers.component';
 
 const routes : Routes=[
 
@@ -25,6 +26,17 @@ const routes : Routes=[
       {
         path: 'info',
         component: CompanyInfoComponent,
+      },
+    ],
+  },
+
+  {
+    path: '',
+    component: CompanyComponent,
+    children: [
+      {
+        path: 'contact-numbers',
+        component: CompanyNumbersComponent,
       },
     ],
   },

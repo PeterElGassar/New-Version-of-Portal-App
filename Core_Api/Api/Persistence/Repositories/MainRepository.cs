@@ -106,6 +106,7 @@ namespace Api.Persistence.Repositories
         public void Remove(int id)
         {
             T entity = dbSet.Find(id);
+            
             Remove(entity);
         }
 

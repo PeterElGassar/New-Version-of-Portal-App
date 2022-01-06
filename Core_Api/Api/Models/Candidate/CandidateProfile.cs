@@ -30,7 +30,7 @@ namespace Api.Models.Candidate
 
         public string CvPath { get; set; }
 
-
+        public bool IsDeleted { get; set; }
 
 
         public virtual ICollection<ProfileCandidatePhonNumber> PhonNumbers { get; set; }

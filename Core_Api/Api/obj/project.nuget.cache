@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LryBiaAuiwDqMS0q7G16XADYiCl7elKVxmlRE2pF1w7JJDXEZPnttEEi8AqY/F5SMLJj9Fks8SfZWJlsUpAwCg==",
+  "dgSpecHash": "yH1lPr7yqCprYtwc9siO1M7LAPXvW/QgUoq0lYKEJN3y94TdBNfKRtco1AVmtbraQQqCH534KeAkRoHz/lXEkQ==",
   "success": true,
-  "projectFilePath": "D:\\سورسات من الشركة\\Portal Angular\\new portal(23-12-2021 )\\Core_Api\\Api\\Api.csproj",
+  "projectFilePath": "D:\\سورسات من الشركة\\Portal Angular\\29-12-2021(new portal)\\Core_Api\\Api\\Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\intel\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\intel\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",

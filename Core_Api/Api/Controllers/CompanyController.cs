@@ -1,4 +1,6 @@
 ﻿
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Api.Extentions;
 using Api.Models;
@@ -32,18 +34,15 @@ namespace Api.Controllers
 
 
         [HttpGet("getCompanyProfile")]
-        public async Task<ActionResult<CompanyProfile>> getCompanyProfile()
+        public async Task<ActionResult<GetCompanyProfileDto>> getCompanyProfile()
         {
             var user = await _userManager.FindByEmailWithProfileCompany(HttpContext.User);
-            var compantProfile = await _unitOfWork.Company.GetFirstOrDefaultAsync(cp => cp.AppUserId == user.Id, "CompanyPhonNumbers");
+            var compantProfile = await _unitOfWork.Company
+                .GetFirstOrDefaultAsync(cp => cp.AppUserId == user.Id, "CompanyPhonNumbers,CompanyIndustries,CompanyAddresses");
             //var compantProfile = await _context.CompanyProfiles.Include(cp => cp.CompanyPhonNumbers).FirstOrDefaultAsync(cp => cp.AppUserId == user.Id);
-
-            //return _mapper.Map<CompanyProfile, CompanyProfileDto>(compantProfile);
-            return  compantProfile;
+         
+            return  _mapper.Map<CompanyProfile, GetCompanyProfileDto>(compantProfile);
         }
-
-
-
 
 
         [HttpPost("CreateCompanyProfile")]
@@ -51,10 +50,17 @@ namespace Api.Controllers
         {
 
             if (companyProfileDto == null)
-                  return StatusCode(StatusCodes.Status404NotFound, new { Status = 404, Message = "Please Enter Full Data" });
+                return StatusCode(StatusCodes.Status404NotFound, new { Status = 404, Message = "Please Enter Full Data" });
 
-              _unitOfWork.Company.Add(_mapper.Map<CompanyProfileDto,CompanyProfile>(companyProfileDto));
-              _unitOfWork.Complete();
+            _unitOfWork.Company.Add(_mapper.Map<CompanyProfileDto, CompanyProfile>(companyProfileDto));
+
+            foreach (var item in companyProfileDto.CompanyIndustries)
+            {
+                
+                _unitOfWork.CompanyIndustry.Add(item);
+            }
+
+            _unitOfWork.Complete();
 
             return  companyProfileDto;
         }
@@ -62,16 +68,43 @@ namespace Api.Controllers
         [HttpPost("UpdateCompanyProfile")]
         public ActionResult<CompanyProfileDto> UpdateCompanyProfile(CompanyProfileDto companyProfileDto)
         {
+            try
+            {
+                if (companyProfileDto == null)
+                    return StatusCode(StatusCodes.Status404NotFound, new { Status = 404, Message = "Please Enter Full Data" });
 
-            if (companyProfileDto == null)
-                  return StatusCode(StatusCodes.Status404NotFound, new { Status = 404, Message = "Please Enter Full Data" });
+                _unitOfWork.Company.Update(_mapper.Map<CompanyProfileDto, CompanyProfile>(companyProfileDto));
 
-              _unitOfWork.Company.Update(_mapper.Map<CompanyProfileDto,CompanyProfile>(companyProfileDto));
-              _unitOfWork.Complete();
+                var allCompanyIndustries = _unitOfWork.CompanyIndustry.GetAll(x => x.CompanyProfileId == companyProfileDto.Id);
 
-            return  companyProfileDto;
+               // remove old Company Industries
+                foreach (var item in allCompanyIndustries)
+                {
+                    _unitOfWork.CompanyIndustry.Remove(item);
+                }
+
+                ////Add new Company Industries
+                foreach (var item in companyProfileDto.CompanyIndustries)
+                {
+                    item.CompanyProfileId = companyProfileDto.Id;
+                    _unitOfWork.CompanyIndustry.Add(item);
+
+                    _unitOfWork.Complete();
+                }
+
+                return companyProfileDto;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.InnerException.Message);
+            }
+
+
+
         }  
         
+
         [HttpDelete("DeleteCompanyProfile")]
         public ActionResult DeleteCompanyProfile(int id)
         {
@@ -82,11 +115,6 @@ namespace Api.Controllers
 
             return Ok(new { message="Deleted Success"}) ;
         }
-
-
-
-
-
 
 
         [HttpPost,DisableRequestSizeLimit]
@@ -120,20 +148,102 @@ namespace Api.Controllers
         }
 
 
+        //Create Company Addesses//////
+        //Create Company Addesses//////
+        [HttpPost("CreateCompanyAddress")]
+        public ActionResult<CompanyAddress> CreateCompanyAddress(CompanyAddress companyAddress)
+        {
+
+            if (companyAddress == null)
+                return StatusCode(StatusCodes.Status404NotFound, new { Status = 404, Message = "Please Enter Full Data" });
+
+            _unitOfWork.CompanyAddress.Add(companyAddress);
+            _unitOfWork.Complete();
+
+            return companyAddress;
+        }
+
+        [HttpPut("UpdateCompanyAddress")]
+        public ActionResult<CompanyAddress> UpdateCompanyAddress(CompanyAddress companyAddress)
+        {
+            if (companyAddress == null)
+                return StatusCode(StatusCodes.Status404NotFound, new { Status = 404, Message = "Please Enter Full Data" });
+
+            _unitOfWork.CompanyAddress.Update(companyAddress);
+
+            _unitOfWork.Complete();
+            return companyAddress;
+        }
+
+        [HttpDelete("DeleteCompanyAddress")]
+        public ActionResult DeleteCompanyAddress(int id)
+        {           
+            _unitOfWork.CompanyAddress.Remove(id);
+            _unitOfWork.Complete();
+            return Ok(new { message ="Deleted Success"});
+        }
+
+        [HttpGet("GetAllAddresses")]
+        public  ActionResult<IEnumerable<CompanyAddress>> GetAllAddressForCompanyPofile(int companyProfileId)
+        {
+           
+            var allCompanyAddresses =   _unitOfWork.CompanyAddress.GetAll(ca=> ca.CompanyProfileId == companyProfileId,null,"CompanyProfile");
+           
+            if (allCompanyAddresses == null)
+                return NotFound(new { message = "No Addresses For this Company yet"});
+
+            return Ok(allCompanyAddresses);
+        }
 
 
-        //public IActionResult AsignToProfileCompany(string imgPath )
-        //{
+        //Create Company Numbers//////
+        //Create Company Numbers//////
+        [HttpPost("CreatePhoneCompanyNumber")]
+        public ActionResult<CompanyPhonNumber> CreateCompanyNumber(CompanyPhonNumber modal)
+        {
 
-        //    var user = await _userManager.FindByEmailWithProfileCompany(HttpContext.User.Identity.);
-        //    var compantProfile = await _unitOfWork.Company.GetFirstOrDefaultAsync(cp => cp.AppUserId == user.Id);
+            if (modal == null)
+                return StatusCode(StatusCodes.Status404NotFound, new { Status = 404, Message = "Please Enter Full Data" });
 
-        //    compantProfile.ImgLogoPath = imgPath;
-        //    _unitOfWork.Company.Update(compantProfile);
+            _unitOfWork.CompanyNumber.Add(modal);
+            _unitOfWork.Complete();
 
-        //    _unitOfWork.Complete();
-        //    return Ok();
-        //}
+            return modal;
+        }
+
+        [HttpPut("UpdateCompanyPhoneNumber")]
+        public ActionResult<CompanyPhonNumber> UpdateCompanyNumber(CompanyPhonNumber companyAddress)
+        {
+            if (companyAddress == null)
+                return StatusCode(StatusCodes.Status404NotFound, new { Status = 404, Message = "Please Enter Full Data" });
+
+            _unitOfWork.CompanyNumber.Update(companyAddress);
+
+            _unitOfWork.Complete();
+            return companyAddress;
+        }
+
+        [HttpDelete("DeleteCompanyNumber")]
+        public ActionResult DeleteCompanyNumber(int id)
+        {           
+            _unitOfWork.CompanyNumber.Remove(id);
+            _unitOfWork.Complete();
+
+            return Ok(new { message ="Deleted Success"});
+        }
+        
+        [HttpGet("GetAllPhoneNumbers")]
+        public  ActionResult<IEnumerable<CompanyPhonNumber>> GetAllNumbersForCompanyPofile(int companyProfileId)
+        {
+           
+            var allCompanyAddresses =   _unitOfWork.CompanyNumber
+                .GetAll(ca=> ca.CompanyProfileId == companyProfileId);
+           
+            if (allCompanyAddresses == null)
+                return NotFound(new { message = "No Addresses For this Company yet"});
+
+            return Ok(allCompanyAddresses);
+        }
 
     }
 }
