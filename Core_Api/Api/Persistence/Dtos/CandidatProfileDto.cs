@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Api.Models.Candidate;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,6 +9,9 @@ namespace Api.Persistence.Dtos
 {
     public class CandidatProfileDto
     {
+
+        public int Id { get; set; }
+
         [Required]
         public string FirstName { get; set; }
 
@@ -37,6 +41,12 @@ namespace Api.Persistence.Dtos
 
         [Required]
         public string CvPath { get; set; }
+
+
+        public string AppUserId { get; set; }
+
+        //here
+        public ICollection<ProfileCandidatePhonNumbersDto> ProfileCandidatePhonNumbers { get; set; }
 
 
     }

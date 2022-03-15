@@ -15,6 +15,7 @@ namespace Api.Helpers
         public MappingProfile()
         {
             CreateMap<CandidateProfile, CandidatProfileDto>();
+            
             CreateMap<CompanyProfile, CompanyProfile>();
             //CompanyProfile
             CreateMap<CompanyProfile, CompanyProfileDto>();
@@ -34,6 +35,12 @@ namespace Api.Helpers
 
             CreateMap<CompanyPhonNumber, CompanyPhoneNumbersDto>();
             CreateMap< CompanyPhoneNumbersDto, CompanyPhonNumber>();
+
+            //Candidate Profile
+            CreateMap<ProfileCandidatePhonNumber, ProfileCandidatePhonNumbersDto>();
+
+            CreateMap<ProfileCandidatePhonNumbersDto, ProfileCandidatePhonNumber>();
+            CreateMap<CandidatProfileDto, CandidateProfile>();  
 
         }
     }

@@ -108,6 +108,41 @@ namespace Api.Migrations
                     b.ToTable("Industries");
                 });
 
+            modelBuilder.Entity("Api.Models.Candidate.CandidateCareerInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CandidateProfileId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CurrentSalary")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExpectedSalary")
+                        .HasColumnType("int");
+
+                    b.Property<string>("JobLevel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JobNature")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JobTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Objective")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CandidateProfileId");
+
+                    b.ToTable("CandidateCareerInfos");
+                });
+
             modelBuilder.Entity("Api.Models.Candidate.CandidateProfile", b =>
                 {
                     b.Property<int>("Id")
@@ -127,10 +162,16 @@ namespace Api.Migrations
                     b.Property<string>("CvPath")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("EducationLevel")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
@@ -140,6 +181,9 @@ namespace Api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MiddleName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nationalty")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProfileImgPath")
@@ -441,6 +485,15 @@ namespace Api.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Api.Models.Candidate.CandidateCareerInfo", b =>
+                {
+                    b.HasOne("Api.Models.Candidate.CandidateProfile", "CandidateProfile")
+                        .WithMany()
+                        .HasForeignKey("CandidateProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Api.Models.Candidate.CandidateProfile", b =>
                 {
                     b.HasOne("Api.Models.AppUser", "AppUser")
@@ -451,7 +504,7 @@ namespace Api.Migrations
             modelBuilder.Entity("Api.Models.Candidate.ProfileCandidatePhonNumber", b =>
                 {
                     b.HasOne("Api.Models.Candidate.CandidateProfile", "CandidateProfile")
-                        .WithMany("PhonNumbers")
+                        .WithMany("ProfileCandidatePhonNumbers")
                         .HasForeignKey("CandidateProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

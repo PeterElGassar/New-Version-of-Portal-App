@@ -5,6 +5,7 @@ using Api.Models.Candidate;
 using Api.Persistence.Dtos;
 using Api.Persistence.Repositories.IRepository;
 using AutoMapper;
+using Google.Apis.Auth;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -97,7 +98,7 @@ namespace Api.Controllers
             if (result.Succeeded)
                 return Ok(_mapper.Map<CandidateProfile, CandidatProfileDto>(user.CandidateProfile));
 
-            return BadRequest("Proplem updating the user");
+            return BadRequest("Proplem while updating the user");
 
         }
 
@@ -183,6 +184,22 @@ namespace Api.Controllers
         {
             return "Your Auth";
         }
+
+        [HttpPost]
+        [Route("test/{token}")]
+        public async Task<IActionResult> TestGoogle([FromRoute] string token)
+        {
+            var google = await GoogleJsonWebSignature.ValidateAsync(token, new GoogleJsonWebSignature.ValidationSettings()
+            {
+
+                Audience = new[] { "347336624379-12kv3a2hlfmh4gklnj49ji0kbd8ic2ic.apps.googleusercontent.com" }
+
+
+            });
+            return Ok();
+        }
+
+
 
 
     }

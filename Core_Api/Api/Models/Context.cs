@@ -27,6 +27,7 @@ namespace Api.Models
         public DbSet<CompanyAddress> CompanyAddresses { get; set; }
         public DbSet<CompanyIndustry> CompanyIndustries { get; set; }
         public DbSet<CompanyPhonNumber> CompanyPhoneNumbers { get; set; }
+        public DbSet<CandidateCareerInfo> CandidateCareerInfos { get; set; }
 
         public DbSet<AppUser> AppUsers { get; set; }
 

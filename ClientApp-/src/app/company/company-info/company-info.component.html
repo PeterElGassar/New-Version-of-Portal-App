@@ -1,0 +1,125 @@
+<p-steps [model]="items" [readonly]="(this.CpmpanyInfoForm.get('id').value === 0) ? true : false" >
+
+</p-steps>
+
+
+<p-toast position="top-right" key="ImageSaveSuccess"></p-toast>
+
+<div  class="candidates-resume-content">
+  <form  [formGroup]="CpmpanyInfoForm" (ngSubmit)="(this.CpmpanyInfoForm.get('id').value == 0) ? submitForm() : submitUpdateForm()" class="resume-info">
+
+    <h3>Company Information</h3>
+    <div class="row">
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <!-- <input class="form-control" type="text" name="First-Name"> -->
+          <!-- <input type="text" formControlName="CompanyName"> -->
+
+          <app-text-input [normalMood]="true" formControlName="companyName" [type]="'text'" [label]="'Company Name'" ></app-text-input>
+
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Founded Date</label>
+          <div class="">
+            <p-calendar dateFormat="dd-mm-yy" formControlName="FoundedDate" [showIcon]="true" inputId="icon"></p-calendar>
+          </div>
+        </div>
+      </div>
+
+<!-- <div class="row">
+  <div class="col-6 mx-auto">
+    <h4>{{this.temp | json}}</h4>
+
+    <p>{{this.temp.companyName}}</p>
+  </div>
+</div> -->
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <app-text-input [normalMood]="true" formControlName="linkedIn" [type]="'text'" [label]="'LinkedIn Link'" >
+
+          </app-text-input>
+
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Company Size</label>
+          
+          <p-dropdown  [options]="CompanySizes" formControlName="companySize" [showClear]="true" placeholder="Select Company Size">
+
+           <ng-template let-size pTemplate="item">
+               <div class="select-item">
+                 <i class="flaticon-community display-7"></i>
+                 <p>{{size}}</p>
+               </div>
+           </ng-template>
+         </p-dropdown>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <!-- <label>Facebook Link</label> -->
+
+          <app-text-input [normalMood]="true" formControlName="feacbook" [type]="'text'" [label]="'Feacbook Link'" >
+
+          </app-text-input>
+
+        </div>
+
+      </div>
+
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Company Industries</label>
+          <div class="">
+            <p-multiSelect  formControlName="companyIndustries"   [options]="this.industries"  defaultLabel="Select Industries" optionLabel="industryName" selectedItemsLabel="{0} items selected"></p-multiSelect>
+          </div>
+
+        </div>
+      </div>
+      
+  
+
+     
+
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label>Company Details</label>
+         
+          <p-editor formControlName="companyDescription" [style]="{'height':'320px'}">
+            <ng-template pTemplate="header">
+                <span class="ql-formats">
+                    <button type="button" class="ql-bold" aria-label="Bold"></button>
+                    <button type="button" class="ql-italic" aria-label="Italic"></button>
+                    <button type="button" class="ql-list" aria-label="Unordered List"></button>
+                </span>
+            </ng-template>
+        </p-editor>
+
+
+        </div>
+      </div>
+<!-- <p>{{this.CpmpanyInfoForm  | json}}</p> -->
+      <button [disabled]="CpmpanyInfoForm.invalid" *ngIf="this.CpmpanyInfoForm.get('id').value == 0" class="default-btn register" type="submit">
+        Submit
+      </button>
+
+      <button [disabled]="CpmpanyInfoForm.invalid" *ngIf="this.CpmpanyInfoForm.get('id').value > 0" class="default-btn register" type="submit">
+        Update Information
+      </button>
+
+
+    </div>
+    
+ 
+   
+  
+   
+   
+  </form>
+</div>

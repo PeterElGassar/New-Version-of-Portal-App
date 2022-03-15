@@ -29,6 +29,8 @@ namespace Api.Persistence.Repositories
             CompanyIndustry = new CompanyIndustryRepository(_context);
             CompanyAddress = new CompanyAddressRepository(_context);
             CompanyNumber = new CompanyNumbersRepository(_context);
+            CandidateProfile = new CandidateRepository(_context);
+            CandidatePhonNumber = new CandidatePhonNumberRepository(_context);
         }
 
         public IAppUserRepository AppUser { get; private set; }
@@ -37,6 +39,9 @@ namespace Api.Persistence.Repositories
         public ICompanyIndustryRepository CompanyIndustry { get; private set; }
         public ICompanyAddressRepository CompanyAddress { get; private set; }
         public ICompanyNumbersRepository CompanyNumber { get; private set; }
+        public ICandidateRepository CandidateProfile { get; private set; }
+
+        public ICandidatePhonNumberRepository CandidatePhonNumber { get; private set; }
 
 
 

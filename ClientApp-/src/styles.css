@@ -1,0 +1,201 @@
+/* You can add global styles to this file, and also import other style files */
+
+a {
+  text-decoration: none !important;
+}
+
+.navbar-area .desktop-nav .navbar .navbar-nav .nav-item a {
+  font-weight: 500;
+}
+
+.ngx-pagination .current {
+  padding: 0.1875rem 0.625rem;
+  background: #2042e3;
+  color: #fefefe;
+  cursor: default;
+  border-radius: 3px 0px 3px 0px;
+}
+
+
+.ngx-pagination a,
+.ngx-pagination button {
+  color: #495057;
+}
+
+
+
+a.navbar-brand>img {
+  max-height: 75px !important;
+  height: 75px !important;
+}
+
+
+
+.default-btn {
+  /* background-color: #3f85c6; */
+  background-color: #3b80bf !important;
+}
+
+.default-btn-dis {
+  /* background-color: #3f85c6; */
+  background-color: #73a3cf !important;
+}
+
+.danger-border {
+  border: solid 1px red !important;
+}
+
+
+.partner-area .owl-carousel .owl-item img {
+  height: 88px;
+}
+
+.single-live-job i {
+  font-size: 3.5rem !important;
+  color: #3b80bf !important;
+}
+
+
+.single-live-job:hover i {
+  color: #fff !important;
+}
+
+
+.hot-jobs-area .show-page p {
+  position: static !important;
+  margin-right: 1rem;
+}
+
+
+.form-group .p-dropdown {
+  width: 100% !important;
+  height: 3rem;
+}
+
+
+
+.display-7 {
+  font-size: 1.8rem !important;
+  color: #818181;
+}
+
+.p-dropdown:not(.p-disabled).p-focus {
+  box-shadow: none;
+  border-color: #fff;
+}
+
+
+:host ::ng-deep .custom-spinner {
+    animation: custom-progress-spinner-dash 1.5s ease-in-out infinite, custom-progress-spinner-color 6s ease-in-out infinite !important;
+}
+
+@keyframes custom-progress-spinner-color {
+    100%,
+    0% {
+        stroke: #16697A !important;
+    }
+    40% {
+        stroke: #489FB5 !important;
+    }
+    66% {
+        stroke: #82C0CC !important;
+    }
+    80%,
+    90% {
+        stroke: #FFA62B !important;
+    }
+}
+
+@keyframes custom-progress-spinner-dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+    }
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+    }
+}
+
+.email-spinner{
+    position: absolute;
+    z-index: 55555 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 1px !important;
+    top: 16% !important;
+    right: 2% !important;
+}
+
+.valid-input{
+  position: absolute;
+  z-index: 55555 !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 1px !important;
+  top: 26% !important;
+  right: 3% !important;
+}
+.valid-input .pi{
+font-size: 1.4rem;
+
+}
+
+.form-group .form-control{
+  box-shadow:0 2px 9px 1px rgb(230 233 249 / 70%) !important;
+}
+
+.pi .pi-check{
+  color: #01b701f0;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item{
+  padding: 0rem 1rem !important;
+}
+
+.p-dropdown-label{
+  padding: 10px 0;
+  padding-left: 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+
+.p-dropdown-label{
+  padding: 10px 0;
+  padding-left: 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.role-item p{
+font-size: 1rem;
+}
+
+.p-dropdown .p-dropdown-label.p-placeholder{
+  padding: 10px 18px !important;
+}
+
+.p-calendar,
+.p-multiselect{
+  width:100% !important;
+  height: 3rem;
+  background: #fff;
+  box-shadow:0 2px 9px 1px rgb(230 233 249 / 70%) !important;
+}
+
+.p-float-label input{
+  width: 100% !important;
+}
+
+.p-toolbar{
+ margin: 1rem 2.2rem !important;
+}
+
+.p-toolbar-group-left > h5{
+  font-size: 1.1rem !important;
+}

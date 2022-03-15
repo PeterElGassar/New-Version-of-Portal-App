@@ -64,6 +64,8 @@ namespace Api.Controllers
 
             return  companyProfileDto;
         }
+
+
         
         [HttpPost("UpdateCompanyProfile")]
         public ActionResult<CompanyProfileDto> UpdateCompanyProfile(CompanyProfileDto companyProfileDto)
@@ -89,8 +91,8 @@ namespace Api.Controllers
                     item.CompanyProfileId = companyProfileDto.Id;
                     _unitOfWork.CompanyIndustry.Add(item);
 
-                    _unitOfWork.Complete();
                 }
+                _unitOfWork.Complete();
 
                 return companyProfileDto;
             }
@@ -99,8 +101,6 @@ namespace Api.Controllers
 
                 throw new Exception(e.InnerException.Message);
             }
-
-
 
         }  
         

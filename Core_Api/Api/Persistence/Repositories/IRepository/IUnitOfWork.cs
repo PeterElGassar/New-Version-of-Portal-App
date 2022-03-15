@@ -15,6 +15,9 @@ namespace Api.Persistence.Repositories.IRepository
         ICompanyAddressRepository CompanyAddress { get; }
 
         ICompanyNumbersRepository CompanyNumber { get; }
+        ICandidateRepository CandidateProfile { get; }
+
+        ICandidatePhonNumberRepository CandidatePhonNumber{ get; }
 
         void Complete();
     }

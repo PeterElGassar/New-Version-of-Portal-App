@@ -35,7 +35,7 @@ namespace Api.Persistence.Repositories
             {
                 companyProfileInDB.CompanyName = companyProfile.CompanyName;
                 companyProfileInDB.CompanyDescription = companyProfile.CompanyDescription;
-                companyProfileInDB.ImgLogoPath = companyProfile.ImgLogoPath;
+                //companyProfileInDB.ImgLogoPath = companyProfile.ImgLogoPath;
                 companyProfileInDB.FoundedDate = companyProfile.FoundedDate;
                 companyProfileInDB.CompanySize = companyProfile.CompanySize;
                 companyProfileInDB.LinkedIn = companyProfile.LinkedIn;

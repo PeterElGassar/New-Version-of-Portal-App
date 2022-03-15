@@ -77,6 +77,13 @@ namespace Api
                 o.MultipartBodyLengthLimit = int.MaxValue;
                 o.ValueLengthLimit = int.MaxValue;
             });
+
+            services.AddAuthentication().AddGoogle(option => {
+                IConfigurationSection googleAuthSection = Configuration.GetSection("Authentication:Google");
+
+                option.ClientId = googleAuthSection["ClientId"];
+                option.ClientSecret = googleAuthSection["ClientSecret"];
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -107,7 +114,6 @@ namespace Api
                 endpoints.MapControllers();
             });
 
-           
         }
     }
 }

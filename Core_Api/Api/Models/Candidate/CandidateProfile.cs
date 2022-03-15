@@ -33,7 +33,15 @@ namespace Api.Models.Candidate
         public bool IsDeleted { get; set; }
 
 
-        public virtual ICollection<ProfileCandidatePhonNumber> PhonNumbers { get; set; }
+        public DateTime DateOfBirth { get; set; }
+
+        public string Gender { get; set; }
+
+        public string Nationalty { get; set; }
+
+
+        //Relative object 
+        public virtual ICollection<ProfileCandidatePhonNumber> ProfileCandidatePhonNumbers { get; set; }
 
         public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }

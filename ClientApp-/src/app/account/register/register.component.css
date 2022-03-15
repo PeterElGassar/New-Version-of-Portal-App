@@ -1,0 +1,28 @@
+.p-dropdown .p-component .p-dropdown-clearable {
+    width:100% !important;
+}
+
+.role-item{
+    display: flex !important;
+    justify-content: space-between !important;
+    flex-direction: row-reverse !important;
+    align-items: center !important;
+}
+
+.display-7
+{
+font-size: 2rem !important;
+color: #2042e3;
+}
+
+.country-itemp p{
+        margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+
+
+.user-area .user-form-content .user-form .form-group .form-control{
+    box-shadow: 0 2px 15px 3px rgb(230 233 249 / 55%) !important;
+}
