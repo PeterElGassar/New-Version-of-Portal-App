@@ -66,8 +66,7 @@ namespace Api.Persistence.Repositories
                 candidateInDb.Country = candidateProfile.Country;
                 candidateInDb.City = candidateProfile.City;
 
-                candidateInDb.Street = candidateProfile.Street;
-                candidateInDb.ZipCode = candidateProfile.ZipCode;
+
                 candidateInDb.EducationLevel = candidateProfile.EducationLevel;
                 //_context.SaveChanges();
 

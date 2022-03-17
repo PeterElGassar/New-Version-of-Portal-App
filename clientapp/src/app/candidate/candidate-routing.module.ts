@@ -1,7 +1,7 @@
+import { CandidateInfoComponent } from './candidate-info/candidate-info.component';
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes } from '@angular/router';
 import { CandidateComponent } from './candidate.component';
-import { CompanyInfoComponent } from '../company/company-info/company-info.component';
 
 
 
@@ -14,7 +14,7 @@ const routes: Routes =[
     children: [
       {
         path: 'profile',
-        component: CompanyInfoComponent,
+        component: CandidateInfoComponent,
       },
     ],
   }

@@ -108,41 +108,6 @@ namespace Api.Migrations
                     b.ToTable("Industries");
                 });
 
-            modelBuilder.Entity("Api.Models.Candidate.CandidateCareerInfo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CandidateProfileId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CurrentSalary")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ExpectedSalary")
-                        .HasColumnType("int");
-
-                    b.Property<string>("JobLevel")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("JobNature")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("JobTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Objective")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CandidateProfileId");
-
-                    b.ToTable("CandidateCareerInfos");
-                });
-
             modelBuilder.Entity("Api.Models.Candidate.CandidateProfile", b =>
                 {
                     b.Property<int>("Id")
@@ -165,8 +130,11 @@ namespace Api.Migrations
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("EducationLevel")
+                    b.Property<string>("EducationLevelId")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EducationLevelId1")
+                        .HasColumnType("int");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
@@ -189,19 +157,30 @@ namespace Api.Migrations
                     b.Property<string>("ProfileImgPath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Street")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ZipCode")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId")
                         .IsUnique()
                         .HasFilter("[AppUserId] IS NOT NULL");
 
+                    b.HasIndex("EducationLevelId1");
+
                     b.ToTable("CandidateProfiles");
+                });
+
+            modelBuilder.Entity("Api.Models.Candidate.EducationLevel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("EducationLevelName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EducationLevels");
                 });
 
             modelBuilder.Entity("Api.Models.Candidate.ProfileCandidatePhonNumber", b =>
@@ -485,20 +464,15 @@ namespace Api.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Api.Models.Candidate.CandidateCareerInfo", b =>
-                {
-                    b.HasOne("Api.Models.Candidate.CandidateProfile", "CandidateProfile")
-                        .WithMany()
-                        .HasForeignKey("CandidateProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Api.Models.Candidate.CandidateProfile", b =>
                 {
                     b.HasOne("Api.Models.AppUser", "AppUser")
                         .WithOne("CandidateProfile")
                         .HasForeignKey("Api.Models.Candidate.CandidateProfile", "AppUserId");
+
+                    b.HasOne("Api.Models.Candidate.EducationLevel", "EducationLevel")
+                        .WithMany()
+                        .HasForeignKey("EducationLevelId1");
                 });
 
             modelBuilder.Entity("Api.Models.Candidate.ProfileCandidatePhonNumber", b =>

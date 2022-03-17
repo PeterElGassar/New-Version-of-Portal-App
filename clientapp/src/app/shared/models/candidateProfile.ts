@@ -1,17 +1,17 @@
-export interface ICandidateProfile{
+export interface ICandidateProfile {
 
-    FirstName:string,
-    MiddleName:string,
-    LastName:string,
-    Country:string,
-
-    EducationLevel:string,
-    ProfileImgPath:string,
-    City:string,
-    CvPath:string,
-
-
-       // Street:string,
-    // ZipCode:string,
+    id: number,
+    firstName: string,
+    middleName: string,
+    lastName: string,
+    country: string,
+    city: string,
+    educationLevelId: string,
+    profileImgPath: string,
+    cvPath: string,
+    nationalty: string,
+    gender: string,
+    dateOfBirth: Date
+    appUserId: string
 
 }

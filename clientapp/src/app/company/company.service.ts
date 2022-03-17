@@ -28,7 +28,6 @@ export class CompanyService {
     return this.http.post(this.baseUrl + "Company/UpdateCompanyProfile", value, { headers })
   }
 
-
   getCompanyProfile() {
     let token = localStorage.getItem("token");
     let headers = new HttpHeaders();

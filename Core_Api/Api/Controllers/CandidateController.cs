@@ -33,7 +33,7 @@ namespace Api.Controllers
 
 
         [HttpGet("getCandidateProfile")]
-        public async Task<ActionResult<CandidatProfileDto>> getCompanyProfile()
+        public async Task<ActionResult<CandidatProfileDto>> GetCompanyProfile()
         {
             var user = await _userManager.FindByEmailWithCandidateProfile(HttpContext.User);
             var candidteProfile = await _unitOfWork.CandidateProfile

@@ -34,7 +34,7 @@ namespace Api.Controllers
 
 
         [HttpGet("getCompanyProfile")]
-        public async Task<ActionResult<GetCompanyProfileDto>> getCompanyProfile()
+        public async Task<ActionResult<GetCompanyProfileDto>> GetCompanyProfile()
         {
             var user = await _userManager.FindByEmailWithProfileCompany(HttpContext.User);
             var compantProfile = await _unitOfWork.Company

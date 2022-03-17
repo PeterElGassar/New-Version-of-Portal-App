@@ -20,11 +20,6 @@ namespace Api.Models.Candidate
         public string City { get; set; }
 
 
-        public string Street { get; set; }
-
-        public string ZipCode { get; set; }
-
-        public string EducationLevel { get; set; }
 
         public string ProfileImgPath { get; set; }
 
@@ -43,9 +38,11 @@ namespace Api.Models.Candidate
         //Relative object 
         public virtual ICollection<ProfileCandidatePhonNumber> ProfileCandidatePhonNumbers { get; set; }
 
+
         public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }
 
-
+        public string EducationLevelId { get; set; }
+        public EducationLevel EducationLevel { get; set; }
     }
 }

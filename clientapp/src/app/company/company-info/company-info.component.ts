@@ -6,7 +6,7 @@ import { AccountService } from 'src/app/account/account.service';
 import { Observable } from 'rxjs';
 import { CompanyService } from '../company.service';
 import { DatePipe } from '@angular/common';
-import { MultiSelectIndustries } from 'src/app/shared/models/test';
+import { MultiSelectIndustries } from 'src/app/shared/models/MultiSelectIndustries';
 
 @Component({
   selector: 'app-company-info',
