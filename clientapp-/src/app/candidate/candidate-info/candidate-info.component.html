@@ -1,0 +1,94 @@
+<p-steps [model]="items" [readonly]="(this.CandidateProfileForm.get('id').value === 0) ? true : false" >
+
+</p-steps>
+
+
+<p-toast position="top-right" key="ImageSaveSuccess"></p-toast>
+
+<div  class="candidates-resume-content">
+  <form  [formGroup]="CandidateProfileForm" (ngSubmit)="(this.CandidateProfileForm.get('id').value == 0) ? submitForm() : submitUpdateForm()" class="resume-info">
+
+    <h3>Your Information</h3>
+    <div class="row">
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <app-text-input [normalMood]="true" formControlName="firstName" [type]="'text'" [label]="'first Name'" ></app-text-input>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <app-text-input [normalMood]="true" formControlName="middleName" [type]="'text'" [label]="'middle Name'" ></app-text-input>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <app-text-input [normalMood]="true" formControlName="lastName" [type]="'text'" [label]="'last Name'" ></app-text-input>
+        </div>
+      </div>
+
+
+
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <app-text-input [normalMood]="true" formControlName="country" [type]="'text'" [label]="'country'" ></app-text-input>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <app-text-input [normalMood]="true" formControlName="city" [type]="'text'" [label]="'city'" ></app-text-input>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <app-text-input [normalMood]="true" formControlName="nationalty" [type]="'text'" [label]="'nationalty'" ></app-text-input>
+        </div>
+      </div>
+
+
+
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Date Of Birth </label>
+          <div class="">
+            <p-calendar dateFormat="dd-mm-yy" formControlName="FoundedDate" [showIcon]="true" inputId="icon"></p-calendar>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <label>Education Level</label>
+          
+          <p-dropdown  [options]="this.EducationLevels" formControlName="companySize" [showClear]="true" placeholder="Select Company Size">
+
+           <ng-template let-size pTemplate="item">
+               <div class="select-item">
+                 <i class="flaticon-community display-7"></i>
+                 <p>{{size}}</p>
+               </div>
+           </ng-template>
+         </p-dropdown>
+        </div>
+      </div>
+
+    
+
+<!-- <p>{{this.CandidateProfileForm  | json}}</p> -->
+      <button [disabled]="CandidateProfileForm.invalid" *ngIf="this.CandidateProfileForm.get('id').value == 0" class="default-btn register" type="submit">
+        Submit
+      </button>
+
+      <button [disabled]="CandidateProfileForm.invalid" *ngIf="this.CandidateProfileForm.get('id').value > 0" class="default-btn register" type="submit">
+        Update Information
+      </button>
+
+
+    </div>
+    
+ 
+  </form>
+</div>

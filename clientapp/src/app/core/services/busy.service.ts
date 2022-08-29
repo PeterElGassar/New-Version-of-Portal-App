@@ -5,18 +5,18 @@ import { NgxSpinnerService } from 'ngx-spinner';
   providedIn: 'root'
 })
 export class BusyService {
-busyRequestCount=0;
-  constructor(private spinnerService:NgxSpinnerService) { }
+  busyRequestCount = 0;
+  constructor(private spinnerService: NgxSpinnerService) { }
 
 
-  busy(){
+  busy() {
     this.busyRequestCount++;
-    this.spinnerService.show(undefined,{
+    this.spinnerService.show(undefined, {
       type: 'ball-pulse-sync',
       bdColor: 'rgba(250,250,250,0.6)',
       color: '#3b80bf',
-      fullScreen:true,
-      size:'medium'
+      fullScreen: true,
+      size: 'medium'
     });
   }
 

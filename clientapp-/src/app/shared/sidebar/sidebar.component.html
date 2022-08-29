@@ -1,0 +1,56 @@
+
+<p-toast position="top-right" key="ImageSaveSuccess"></p-toast>
+   
+   <div class="avatar-sidebar">
+        <h3>Share This Job</h3>
+        <div class="avatar-img">
+            <img *ngIf="this.img_path !== null" class="company-logo" src="{{img_path}}" alt="Image">
+            <div class="avatar-mane">
+
+                <!-- <p-fileUpload name="companyLogoFile[]"
+                accept="image/*" [auto]="true" (onSelect)="OnSelectedImage()">
+
+                </p-fileUpload> -->
+
+                <p-fileUpload #fubauto mode="basic" name="companyLogoFile[]" 
+                 accept="image/*" maxFileSize="100000"
+                  (onSelect)="OnSelectedImage($event)" 
+                  [auto]="true" chooseLabel="Upload image">
+                </p-fileUpload>
+
+            </div>
+            <div class="avatar-mane">
+                <h4>Company Name</h4>
+                <span>Indastry : UX/UI Designer</span>
+            </div>
+        </div>
+        <ul>
+            <li>
+                <a routerLinkActive="active" routerLink="/company/info">Dashboard</a>
+            </li>
+            <li>
+                <a routerLinkActive="active" routerLink="/company/profile">Profile</a>
+            </li>
+            <li>
+                <a href="resume.html">Resume</a>
+            </li>
+            <li>
+                <a href="bookmarks.html">Bookmarks</a>
+            </li>
+            <li>
+                <a href="applied-jobs.html">Applied Jobs</a>
+            </li>
+            <li>
+                <a href="alert-jobs.html">Alert Jobs</a>
+            </li>
+            <li>
+                <a href="message.html">Message</a>
+            </li>
+            <li>
+                <a href="change-password.html">Change Password</a>
+            </li>
+            <li>
+                <a href="log-in-register.html">Log Out</a>
+            </li>
+        </ul>
+    </div>
